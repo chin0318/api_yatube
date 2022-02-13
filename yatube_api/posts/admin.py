@@ -11,5 +11,22 @@ class PostAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Post, PostAdmin)
-admin.site.register(Group)
-admin.site.register(Comment)
+
+
+class GroupAdmin(admin.ModelAdmin):
+    list_display = ("id", "title", "slug", "description")
+    search_fields = (
+        "title",
+        "description",
+    )
+
+
+admin.site.register(Group, GroupAdmin)
+
+
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ("id", "author", "post", "text", "created")
+    search_fields = ("author", "text", "created")
+
+
+admin.site.register(Comment, CommentAdmin)
